@@ -7,24 +7,26 @@ import TrackList from "../TrackList/TrackList";
 
 
 const Playlist = (props) => {
+  const { onNameChange, playlistTracks, onRemove, onPlay, currentTrackId, onSave } = props;
+
   const handleNameChange = useCallback(
     (event) => {
-      props.onNameChange(event.target.value);
+      onNameChange(event.target.value);
     },
-    [props.onNameChange]
+    [onNameChange]
   );
 
   return (
     <div className="Playlist">
       <input onChange={handleNameChange} placeholder="Create playlist ..." />
       <TrackList
-        tracks={props.playlistTracks}
+        tracks={playlistTracks}
         isRemoval={true}
-        onRemove={props.onRemove}
-        onPlay={props.onPlay} // Pass onPlay to TrackList
-        currentTrackId={props.currentTrackId} // Pass currentTrackId to TrackList
+        onRemove={onRemove}
+        onPlay={onPlay} // Pass onPlay to TrackList
+        currentTrackId={currentTrackId} // Pass currentTrackId to TrackList
       />
-      <button className="Playlist-save" onClick={props.onSave}>
+      <button className="Playlist-save" onClick={onSave}>
         SAVE TO SPOTIFY
       </button>
     </div>

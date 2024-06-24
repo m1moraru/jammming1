@@ -7,20 +7,21 @@ let currentlyPlayingAudio = null;
 let currentlyPlayingTrack = null;  // Track the currently playing track component
 
 const Track = (props) => {
+  const { track, onAdd, onRemove, isRemoval } = props;
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audio] = useState(props.track.previewUrl ? new Audio(props.track.previewUrl) : null);
+  const [audio] = useState(track.previewUrl ? new Audio(track.previewUrl) : null);
   const [errorMessage, setErrorMessage] = useState('');
 
   const addTrack = useCallback(() => {
-    props.onAdd(props.track);
-  }, [props.onAdd, props.track]);
+    onAdd(track);
+  }, [onAdd, track]);
 
   const removeTrack = useCallback(() => {
-    props.onRemove(props.track);
-  }, [props.onRemove, props.track]);
+    onRemove(track);
+  }, [onRemove, track]);
 
   const renderAction = () => {
-    if (props.isRemoval) {
+    if (isRemoval) {
       return (
         <button className="Track-action" onClick={removeTrack}>
           -
@@ -85,14 +86,14 @@ const Track = (props) => {
 
   return (
     <div className={`Track ${isPlaying ? 'Track-playing' : ''}`}>
-      <img src={props.track.imageUrl} alt={`${props.track.name} album cover`} className="Track-image" />
+      <img src={track.imageUrl} alt={`${track.name} album cover`} className="Track-image" />
       <div className="Track-information">
-        <h3>{props.track.name}</h3>
+        <h3>{track.name}</h3>
         <p>
-          {props.track.artist} | {props.track.album}
+          {track.artist} | {track.album}
         </p>
       </div>
-      {props.track.previewUrl ? (
+      {track.previewUrl ? (
         <button className="Track-preview" onClick={playPreview}>
           {isPlaying ? '||' : '▶'}
         </button>
@@ -112,6 +113,7 @@ const Track = (props) => {
     </div>
   );
 };
+
 
 
 export default Track;
