@@ -1,8 +1,4 @@
 .Playlist {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     width: 57%;
     height: 850px;
     overflow-y: scroll;
