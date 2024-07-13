@@ -41,8 +41,8 @@ The application follows a client-server architecture, where the client is a sing
     sources.
   * Ensures a smooth user experience by providing clear feedback.
 
-  <img src="Jamming1.png" width="600" height="400">
-  <img src="Jamming2.png" width="600" height="400">
+  <img src="Jamming1.png" width="660" height="400">
+  <img src="Jamming2.png" width="660" height="400">
 
 #### 3.4  Component Breackdown
 * **App:** The root component that manages the overall state and renders other components.
@@ -72,7 +72,7 @@ The application uses Spotify's OAuth 2.0 authentication flow to securely authent
 * **Authentication Flow:** Handling token expiration and refresh tokens adds complexity to the authentication process.
 * **Unsupported Sources:** Some tracks may not have a playable sample, which requires graceful error handling.
 
-<img src="Jamming3.png" width="600" height="400">
+<img src="Jamming3.png" width="660" height="400">
 
 ### 5. Future Work
 * **Enhanced Search Filters:** Adding more advanced search filters to allow users to find songs based on additional attributes.
