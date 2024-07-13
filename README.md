@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+# Technical Design Document for Jammming
+## June 20th 2024
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ ### 1.  Objectives
+The primary objective of the Jammming project is to create a web application that allows users to interact with the Spotify library. Users can search for songs, view detailed information about them, create custom playlists, and save these playlists directly to their Spotify account. The application aims to provide an intuitive and engaging user experience for music enthusiasts.
 
-## Available Scripts
+### 2.  Background
+Jammming leverages the power of the Spotify API to access a vast library of music. The application is built using React, which allows for efficient state management and component-based architecture. The project integrates authentication to ensure secure access to user data and playlists on Spotify.
 
-In the project directory, you can run:
+### 3.  Technical Design
+#### 3.1  Architecture Overview
+The application follows a client-server architecture, where the client is a single-page application built with React, and the server-side interactions are managed through HTTP requests to the Spotify API.
 
-### `npm start`
+#### 3.2  Technologies Used
+* **HTML:** Provides the basic structure of the web application.
+* **CSS:** Used for styling the application and ensuring a responsive and visually appealing design.
+* **JavaScript:** Core programming language used to build the application's functionality.
+* **React:** JavaScript library used for building user interfaces and managing state.
+* **HTTP** Requests and Responses: Used to interact with the Spotify API to fetch and manipulate data.
+* **Authentication:** Implemented to securely access and modify user playlists on Spotify.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+#### 3.3  Features
+##### 1. **Search Functionality:**
+  * Users can search for songs by song title, artist name, genre, and other attributes.
+  * Utilizes Spotify's search endpoints to retrieve relevant results.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+ ##### 2. Song Information Display:
+  * Displays detailed information about each song, including title, artist, and album.
+  * Includes album images and track samples for a richer user experience.
 
-### `npm test`
+ ##### 3. Custom Playlist Creation:
+  * Users can create custom playlists by adding songs from the search results.
+  * Playlists can be named and managed within the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ ##### 4. Export to Spotify:
+  * Users can export their custom playlists to their personal Spotify account.
+  * Requires user authentication to ensure secure access to the user's Spotify data.
 
-### `npm run build`
+ ##### 5. Error Handling:
+  * Displays an error message if a track's sample cannot be played due to unsupported 
+    sources.
+  * Ensures a smooth user experience by providing clear feedback.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  <img src="">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+#### 3.4  Component Breackdown
+* **App:** The root component that manages the overall state and renders other components.
+* **SearchBar:** Allows users to input their search queries.
+* **SearchResults:** Displays the search results fetched from the Spotify API.
+* **Playlist:** Manages and displays the user's custom playlist.
+* **Track:** Represents an individual track, displaying relevant information and playback 
+  controls.
+* **ErrorMessage:** Displays error messages for unsupported track samples.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 3.5  State Management
+State is managed at various levels of the component hierarchy to ensure efficient data flow and reactivity. Key states include search results, current playlist, playback status, and error messages.
 
-### `npm run eject`
+#### 3.6  API Integration
+The application interacts with the Spotify API using HTTP requests. Key endpoints used include:
+  * **Search Endpoint:** To fetch songs based on user queries.
+  * **User Playlist Endpoint:** To create and modify user playlists.
+  * **Authentication Endpoint:** To manage user authentication and secure API access.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### 3.7  Authentication
+The application uses Spotify's OAuth 2.0 authentication flow to securely authenticate users. This allows the application to perform actions on behalf of the user, such as creating and modifying playlists.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 4.  Caveats
+* **API Rate Limiting:** The Spotify API has rate limits that can affect the application's 
+  performance if too many requests are made in a short period.
+* **Cross-Origin Resource Sharing (CORS):** Ensuring proper CORS settings is essential to avoid issues when making API requests.
+* **Authentication Flow:** Handling token expiration and refresh tokens adds complexity to the authentication process.
+* **Unsupported Sources:** Some tracks may not have a playable sample, which requires graceful error handling.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<img src="">
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 5. Future Work
+* **Enhanced Search Filters:** Adding more advanced search filters to allow users to find songs based on additional attributes.
+* **User Feedback:** Implementing user feedback mechanisms to improve the application based on user suggestions.
+* **Mobile Optimization:** Enhancing the mobile responsiveness and usability of the application.
+* **Social Features:** Adding social features such as sharing playlists with friends and collaborative playlist creation.
+* **Advanced Error Handling:** Improving error handling mechanisms to cover more edge cases and provide better user feedback.
 
-## Learn More
+---
+_This technical design document outlines the structure, functionality, and future plans for the Jammming project. The application aims to provide a seamless and enjoyable experience for users to explore and manage their music using the Spotify library._
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
