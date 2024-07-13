@@ -42,6 +42,7 @@ The application follows a client-server architecture, where the client is a sing
   * Ensures a smooth user experience by providing clear feedback.
 
   <img src="">
+  <img src="">
 
 #### 3.4  Component Breackdown
 * **App:** The root component that manages the overall state and renders other components.
